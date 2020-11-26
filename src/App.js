@@ -21,7 +21,7 @@ import {
 
 import Parameter from './Parameter';
 import ImagePicker from 'react-native-image-picker';
-import Tflite from 'tflite-react-native';
+import Tflite from 'tflite-react-native-alternative';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
@@ -75,8 +75,8 @@ const App: () => React$Node = () => {
     setIsRunning(true);
 
     tflite.loadModel({
-      model: 'epoch.tflite',// required
-      labels: 'labels.txt',  // required
+      model: 'DenseNetId-Dogs2.tflite',// required
+      labels: 'labels2.txt',  // required
       numThreads: 1,                              // defaults to 1  
     },
       (err, res) => {
@@ -115,7 +115,7 @@ const App: () => React$Node = () => {
     }
 
 
-    tflite.runModelOnImage({
+    tflite.runIdOnImage({
       path: picture.uri,  // required
       imageMean: parseFloat(imageMean, 10),
       imageStd: parseFloat(imageStd, 10),
